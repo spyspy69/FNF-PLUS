@@ -66,21 +66,40 @@ class PauseSubState extends MusicBeatSubstate
 		fplus.updateHitbox();
 		add(fplus);
 
+
+		#if debug
+		var debugmode:FlxText = new FlxText(20, 15 + 256, 0, "", 32);
+		debugmode.text += "DEBUG MODE!";
+		debugmode.scrollFactor.set();
+		debugmode.setFormat(Paths.font('vcr.ttf'), 32);
+		debugmode.updateHitbox();
+		add(debugmode);
+		#end
+
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
 		blueBalled.alpha = 0;
 		fplus.alpha = 0;
+		#if debug
+		debugmode.alpha = 0;
+		#end
 
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
 		blueBalled.x = FlxG.width - (blueBalled.width + 20);
 		fplus.x = FlxG.width - (fplus.width + 20);
+		#if debug
+		debugmode.x = FlxG.width - (debugmode.width + 20);
+		#end
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
 		FlxTween.tween(blueBalled, {alpha: 1, y: blueBalled.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 		FlxTween.tween(fplus, {alpha: 1, y: fplus.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.9});
+		#if debug
+		FlxTween.tween(debugmode, {alpha: 1, y: debugmode.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.0});
+		#end
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
