@@ -36,7 +36,11 @@ class OptionsSubState extends MusicBeatSubstate
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
+		if(FlxG.keys.pressed.ESCAPE)
+			{
+				FlxG.state.closeSubState();
+				FlxG.switchState(new MainMenuState());
+			}
 		if (controls.UP_P)
 			curSelected -= 1;
 

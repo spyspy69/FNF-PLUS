@@ -532,18 +532,18 @@ class Controls extends FlxActionSet
 		switch (scheme)
 		{
 			case Solo: //123123
-				bindKeys(Control.UP, [D, FlxKey.UP]);
+				bindKeys(Control.UP, [J FlxKey.UP]);
 				bindKeys(Control.DOWN, [F, FlxKey.DOWN]);
-				bindKeys(Control.LEFT, [J, FlxKey.LEFT]);
+				bindKeys(Control.LEFT, [D, FlxKey.LEFT]);
 				bindKeys(Control.RIGHT, [K, FlxKey.RIGHT]);
 				bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 				bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 				bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
 				bindKeys(Control.RESET, [R]);
 			case Duo(true):
-				bindKeys(Control.UP, [D]);
+				bindKeys(Control.UP, [J]);
 				bindKeys(Control.DOWN, [F]);
-				bindKeys(Control.LEFT, [J]);
+				bindKeys(Control.LEFT, [D]);
 				bindKeys(Control.RIGHT, [K]);
 				bindKeys(Control.ACCEPT, [G, Z]);
 				bindKeys(Control.BACK, [H, X]);
