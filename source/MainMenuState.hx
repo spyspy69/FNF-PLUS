@@ -18,7 +18,7 @@ import io.newgrounds.NG;
 import lime.app.Application;
 
 using StringTools;
-
+var versionnum:String = "1.0.0";
 class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
@@ -26,9 +26,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'donate', 'options'];
 	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'fuck off'];
+	var optionShit:Array<String> = ['story mode'];
 	#end
 
 	var magenta:FlxSprite;
@@ -38,7 +38,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In A Menu | FNF PLUS", null);
 		#end
 
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -96,7 +96,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "FNF PLUS V" + versionnum, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -176,18 +176,16 @@ class MainMenuState extends MusicBeatState
 									case 'story mode':
 										FlxG.switchState(new StoryMenuState());
 										trace("Story Menu Selected");
-									case 'freeplay':
-										FlxG.switchState(new FreeplayState());
-
-										trace("Freeplay Menu Selected");
-
+										//no freeplay, that broke a lot of shit
 									case 'options':
 										FlxTransitionableState.skipNextTransIn = true;
 										FlxTransitionableState.skipNextTransOut = true;
 										FlxG.switchState(new OptionsMenu());
+										//or options, that also broke shit
 									case 'fuck off':
 										trace("fuck off");
 										FlxG.switchState(new StoryMenuState());
+										//personal vendetta against nintendo
 								}
 							});
 						}

@@ -17,6 +17,7 @@ class OutdatedSubState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 		var ver = "v" + Application.current.meta.get('version');
+		trace(ver);
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"HEY! You're running an outdated version of the game!\nCurrent version is "
 			+ ver

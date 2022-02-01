@@ -12,6 +12,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import GameOverSubstate;
 
 class PauseSubState extends MusicBeatSubstate
 {
@@ -51,15 +52,35 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.updateHitbox();
 		add(levelDifficulty);
 
+		var blueBalled:FlxText = new FlxText(20, 15 + 64, 0, "", 32);
+		blueBalled.text += "blueballed: " + bb;
+		blueBalled.scrollFactor.set();
+		blueBalled.setFormat(Paths.font('vcr.ttf'), 32);
+		blueBalled.updateHitbox();
+		add(blueBalled);
+
+		var fplus:FlxText = new FlxText(20, 15 + 96, 0, "", 32);
+		fplus.text += "Friday Night Funkin Plus V" + MainMenuState.versionnum;
+		fplus.scrollFactor.set();
+		fplus.setFormat(Paths.font('vcr.ttf'), 32);
+		fplus.updateHitbox();
+		add(fplus);
+
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
+		blueBalled.alpha = 0;
+		fplus.alpha = 0;
 
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
+		blueBalled.x = FlxG.width - (blueBalled.width + 20);
+		fplus.x = FlxG.width - (fplus.width + 20);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
+		FlxTween.tween(blueBalled, {alpha: 1, y: blueBalled.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
+		FlxTween.tween(fplus, {alpha: 1, y: fplus.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.9});
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);

@@ -285,7 +285,7 @@ class TitleState extends MusicBeatState
 
 			transitioning = true;
 			// FlxG.sound.music.stop();
-
+			/*
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
 				// Check if version is outdated
@@ -306,6 +306,8 @@ class TitleState extends MusicBeatState
 					FlxG.switchState(new MainMenuState());
 				}
 			});
+			*/
+			FlxG.switchState(new MainMenuState()); //no ver bullshit
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
@@ -364,10 +366,10 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(["Base engine by:", ""]);
+				addMoreText('');
 			// credTextShit.visible = true;
 			case 3:
-				addMoreText('ninjamuffin99\nphantomArcade\nkawaisprite\nevilsk8er');
+				createCoolText(['Base Engine By', "Cool FNF Team"]);
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -376,10 +378,10 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['Not In association', 'with']);
+				createCoolText(['made by competitive players', 'for']);
 			case 7:
-				addMoreText('newgrounds');
-				ngSpr.visible = true;
+				addMoreText('competitive players');
+				ngSpr.visible = false;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
@@ -406,7 +408,8 @@ class TitleState extends MusicBeatState
 				addMoreText('Night');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin+'); // credTextShit.text += '\nFunkin';
+				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('Plus'); //adds plus!
 
 			case 16:
 				skipIntro();

@@ -146,8 +146,12 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
-
+		#if !DEBUG
 		FlxCamera.defaultCameras = [camGame];
+		#else
+		FlxG.cameras.setDefaultDrawTarget([camGame])
+		#end
+
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -1295,10 +1299,12 @@ class PlayState extends MusicBeatState
 			if (Conductor.songPosition > 0.0)
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength - Conductor.songPosition);
+				trace("1");
 			}
 			else
 			{
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+				trace("2");
 			}
 		}
 		#end
@@ -1312,6 +1318,7 @@ class PlayState extends MusicBeatState
 		if (health > 0 && !paused)
 		{
 			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+			trace("3");
 		}
 		#end
 
@@ -2135,14 +2142,16 @@ class PlayState extends MusicBeatState
 	{
 		if (!boyfriend.stunned)
 		{
-			health -= 0.04;
+			//trace(health);
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
-				gf.playAnim('sad');
+				//gf.playAnim('sad');
+				//trace("bruh");
 			}
-			combo = 0;
-
+			combo == combo;
 			songScore -= 10;
+
+			//trace(songScore);
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
