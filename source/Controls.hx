@@ -499,7 +499,7 @@ class Controls extends FlxActionSet
 		switch (scheme)
 		{
 			case Solo: //123123
-				bindKeys(Control.UP, [J FlxKey.UP]);
+				bindKeys(Control.UP, [J, FlxKey.UP]);
 				bindKeys(Control.DOWN, [F, FlxKey.DOWN]);
 				bindKeys(Control.LEFT, [D, FlxKey.LEFT]);
 				bindKeys(Control.RIGHT, [K, FlxKey.RIGHT]);
@@ -532,7 +532,7 @@ class Controls extends FlxActionSet
 		switch (scheme)
 		{
 			case Solo: //123123
-				bindKeys(Control.UP, [J FlxKey.UP]);
+				bindKeys(Control.UP, [J, FlxKey.UP]);
 				bindKeys(Control.DOWN, [F, FlxKey.DOWN]);
 				bindKeys(Control.LEFT, [D, FlxKey.LEFT]);
 				bindKeys(Control.RIGHT, [K, FlxKey.RIGHT]);
