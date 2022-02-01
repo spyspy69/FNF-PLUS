@@ -74,3 +74,4 @@ As for Mac, 'lime test mac -debug' should work, if not the internet surely has a
 - DFJK input support(replaces WASD and IJKL)
 - "easy" to read comments
 - extra boot lines
+- secret in OptionsSubState.hx line 71
