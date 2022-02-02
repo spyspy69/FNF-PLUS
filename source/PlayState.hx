@@ -52,6 +52,7 @@ class PlayState extends MusicBeatState
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
+	var miss:Int = 0;
 
 	var halloweenLevel:Bool = false;
 
@@ -115,6 +116,7 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var scoreTxt:FlxText;
+	var missedStuff:FlxText;
 
 	public static var campaignScore:Int = 0;
 
@@ -742,6 +744,11 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
+		missedStuff = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 20, 0, "", 20);
+		missedStuff.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		missedStuff.scrollFactor.set();
+		add(missedStuff);
+
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
@@ -757,6 +764,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		missedStuff.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
@@ -1372,6 +1380,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score:" + songScore;
+		missedStuff.text = "Misses: " + miss; 
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -2187,7 +2196,6 @@ class PlayState extends MusicBeatState
 		var rightP = controls.RIGHT_P;
 		var downP = controls.DOWN_P;
 		var leftP = controls.LEFT_P;
-
 		if (leftP)
 			noteMiss(0);
 		if (downP)
@@ -2205,6 +2213,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			badNoteCheck();
+			miss++;
 		}
 	}
 
