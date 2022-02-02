@@ -75,3 +75,7 @@ As for Mac, 'lime test mac -debug' should work, if not the internet surely has a
 - "easy" to read comments
 - extra boot lines
 - secret in OptionsSubState.hx line 71
+
+
+### Additions
+[PLANS.md](https://github.com/spyspy69/FNF-PLUS/blob/master/PLANS.md) is a list of the plans i have for this project. you will see a <working on now!> next to the item i'm working on, and you can help to! just pick one that doesnt have either <working on now!> or <done!> next to them and get to work, your help will be valued
