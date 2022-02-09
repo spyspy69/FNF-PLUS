@@ -20,9 +20,7 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
 
 THESE INSTRUCTIONS ARE FOR COMPILING THE GAME'S SOURCE CODE!!!
 
-IF YOU WANT TO JUST DOWNLOAD AND INSTALL AND PLAY THE GAME NORMALLY, GO TO ITCH.IO TO DOWNLOAD THE GAME FOR PC, MAC, AND LINUX!!
-
-https://ninja-muffin24.itch.io/funkin
+IF YOU WANT TO JUST DOWNLOAD AND INSTALL AND PLAY THE GAME NORMALLY, GO TO [HERE](github.com/spyspy69/FNF-PLUS/releases/latest)
 
 IF YOU WANT TO COMPILE THE GAME YOURSELF, CONTINUE READING!!!
 
@@ -74,7 +72,6 @@ As for Mac, 'lime test mac -debug' should work, if not the internet surely has a
 - DFJK input support(replaces WASD and IJKL)
 - "easy" to read comments
 - extra boot lines
-- secret in OptionsSubState.hx line 71
 
 
 ### Additions
