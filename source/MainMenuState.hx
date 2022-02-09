@@ -18,7 +18,9 @@ import io.newgrounds.NG;
 import lime.app.Application;
 
 using StringTools;
-var versionnum:String = "1.0.0";
+var versionnum:String = "0.0.1";
+var isprebuild:Bool = false; //will be used later, trust me
+
 class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
