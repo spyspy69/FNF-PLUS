@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 
 class OptionsSubState extends MusicBeatSubstate
 {
-	var textMenuItems:Array<String> = ['Master Volume', 'Sound Volume', 'Controls'];
+	var textMenuItems:Array<String> = ['Controls', 'Botplay', 'Back'];
 
 	var selector:FlxSprite;
 	var curSelected:Int = 0;
@@ -67,9 +67,12 @@ class OptionsSubState extends MusicBeatSubstate
 			{
 				case "Controls":
 					FlxG.switchState(new ControlsSubState());
+				case "Back":
+					FlxG.state.closeSubState();
+					FlxG.switchState(new MainMenuState()); //or you could press ESC
+				case "Botplay":
+					FlxG.switchState(new BotPlaySettingsState());
 			}
 		}
 	}
 }
-
-//https://www.youtube.com/watch?v=34Ig3X59_qA

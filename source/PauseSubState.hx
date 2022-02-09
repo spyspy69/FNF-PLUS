@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxBasic;
 import Controls.Control;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -37,6 +38,7 @@ class PauseSubState extends MusicBeatSubstate
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
+		
 
 		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += "You are playing " + PlayState.SONG.song;
@@ -59,17 +61,25 @@ class PauseSubState extends MusicBeatSubstate
 		blueBalled.updateHitbox();
 		add(blueBalled);
 
+		#if !debug
 		var fplus:FlxText = new FlxText(20, 15 + 96, 0, "", 32);
 		fplus.text += "Friday Night Funkin Plus V" + MainMenuState.versionnum;
 		fplus.scrollFactor.set();
 		fplus.setFormat(Paths.font('vcr.ttf'), 32);
 		fplus.updateHitbox();
 		add(fplus);
-
+		#else
+		var fplus:FlxText = new FlxText(20, 15 + 96, 0, "", 32);
+		fplus.text += "Friday Night Funkin Plus PRE BUILD " + MainMenuState.versionnum;
+		fplus.scrollFactor.set();
+		fplus.setFormat(Paths.font('vcr.ttf'), 32);
+		fplus.updateHitbox();
+		add(fplus);
+		#end
 
 		#if debug
 		var debugmode:FlxText = new FlxText(20, 15 + 256, 0, "", 32);
-		debugmode.text += "DEBUG MODE!";
+		debugmode.text += "PRE BUILD / DEBUG BUILD";
 		debugmode.scrollFactor.set();
 		debugmode.setFormat(Paths.font('vcr.ttf'), 32);
 		debugmode.updateHitbox();
