@@ -9,3 +9,5 @@ Funkin LUA Interp
 Difficulty Switcher in Pause state
 
 full rechart! not saying they're bad, but they're bad
+
+-- it's 5:43 pm as i'm writing this i need to touch grass
