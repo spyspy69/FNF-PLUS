@@ -228,7 +228,7 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused - " + detailsText;
 		
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC);
 		#end
 
 		switch (SONG.song.toLowerCase())
@@ -1034,7 +1034,7 @@ class PlayState extends MusicBeatState
 		songLength = FlxG.sound.music.length;
 
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength);
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC, true, songLength);
 		#end
 	}
 
@@ -1093,7 +1093,7 @@ class PlayState extends MusicBeatState
 				swagNote.sustainLength = songNotes[2];
 				swagNote.scrollFactor.set(0, 0);
 
-				var susLength:Float = swagNote.sustainLength;
+				var susLength:Float = swagNote.sustainLength; //STOP POSTING ABOUT AMONGUS
 
 				susLength = susLength / Conductor.stepCrochet;
 				unspawnNotes.push(swagNote);
@@ -1280,11 +1280,11 @@ class PlayState extends MusicBeatState
 			#if desktop
 			if (startTimer.finished)
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength - Conductor.songPosition);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC, true, songLength - Conductor.songPosition);
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC);
 			}
 			#end
 		}
@@ -1299,12 +1299,12 @@ class PlayState extends MusicBeatState
 		{
 			if (Conductor.songPosition > 0.0)
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength - Conductor.songPosition);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC, true, songLength - Conductor.songPosition);
 				trace("1");
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC);
 				trace("2");
 			}
 		}
@@ -1318,7 +1318,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (health > 0 && !paused)
 		{
-			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC);
 			trace("3");
 		}
 		#end
@@ -1390,7 +1390,7 @@ class PlayState extends MusicBeatState
 				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		
 			#if desktop
-			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
+			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ") | FNF PLUS V " +  MainMenuState.versionnum, iconRPC);
 			#end
 		}
 
@@ -1399,7 +1399,7 @@ class PlayState extends MusicBeatState
 			FlxG.switchState(new ChartingState());
 
 			#if desktop
-			DiscordClient.changePresence("Chart Editor", null, null, true);
+			DiscordClient.changePresence("Chart Editor: " + SONG.song, null, null, true);
 			#end
 		}
 

@@ -58,7 +58,7 @@ class OptionsSubState extends MusicBeatSubstate
 			txt.color = FlxColor.WHITE;
 
 			if (txt.ID == curSelected)
-				txt.color = FlxColor.YELLOW;
+				txt.color = FlxColor.BLUE;
 		});
 
 		if (controls.ACCEPT)

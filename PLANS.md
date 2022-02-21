@@ -1,6 +1,6 @@
-better settings menu! <working on now!>
+better settings menu! <Postponed>
 
-freeplay re-made to work this time
+freeplay re-made to work this time <got working, only displays "tutorial" for the moment. just incase there is an error, i have wrapped it in a try:catch statment>
 
 botplay (?)
 

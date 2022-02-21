@@ -52,7 +52,7 @@ class FreeplayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Menus | FNF PLUS", null);
 		#end
 
 		var isDebug:Bool = false;
@@ -123,7 +123,7 @@ class FreeplayState extends MusicBeatState
 
 		add(scoreText);
 
-		changeSelection();
+		//changeSelection();
 		changeDiff();
 
 		// FlxG.sound.playMusic(Paths.music('title'), 0);
@@ -258,7 +258,7 @@ class FreeplayState extends MusicBeatState
 	function changeSelection(change:Int = 0)
 	{
 		#if !switch
-		NGio.logEvent('Fresh');
+		//NGio.logEvent('Fresh');
 		#end
 
 		// NGio.logEvent('Fresh');

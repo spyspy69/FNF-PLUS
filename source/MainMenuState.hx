@@ -1,5 +1,6 @@
 package;
 
+import FreeplayState.SongMetadata;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -18,7 +19,7 @@ import io.newgrounds.NG;
 import lime.app.Application;
 
 using StringTools;
-var versionnum:String = "0.0.1";
+var versionnum:String = "1.0";
 var isprebuild:Bool = false; //will be used later, trust me
 
 class MainMenuState extends MusicBeatState
@@ -28,7 +29,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'donate', 'options', 'freeplay'];
 	#else
 	var optionShit:Array<String> = ['story mode'];
 	#end
@@ -178,12 +179,22 @@ class MainMenuState extends MusicBeatState
 									case 'story mode':
 										FlxG.switchState(new StoryMenuState());
 										trace("Story Menu Selected");
-										//no freeplay, that broke a lot of shit
 									case 'options':
 										FlxTransitionableState.skipNextTransIn = true;
 										FlxTransitionableState.skipNextTransOut = true;
 										FlxG.switchState(new OptionsMenu());
 										//or options, that also broke shit
+									case 'freeplay':
+										try{
+											FlxG.switchState(new FreeplayState());
+											trace("Freeplay [buggy] Selected");
+										}catch(e){
+											trace(e.details);
+											trace(e.message);
+											trace(e.stack);
+											FlxG.switchState(new StoryMenuState());
+											trace("transfered request for \"freeplayState.hx\" to \"StoryMenuState.hx\"");
+										}
 									case 'fuck off':
 										trace("fuck off");
 										FlxG.switchState(new StoryMenuState());
