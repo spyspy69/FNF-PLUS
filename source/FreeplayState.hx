@@ -46,39 +46,35 @@ class FreeplayState extends MusicBeatState
 			if (FlxG.sound.music != null)
 			{
 				if (!FlxG.sound.music.playing)
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('coolmenumusicfromfresh'));
 			}
 		 */
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus | FNF PLUS", null);
+		DiscordClient.changePresence("In Freeplay | FNF PLUS", null);
 		#end
 
-		var isDebug:Bool = false;
+		var isCoolPerson:Bool = true; //you are cool guys/girls
 
-		#if debug
-		isDebug = true;
-		#end
-/*
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
+		isCoolPerson = true;
+		if (StoryMenuState.weekUnlocked[2] || isCoolPerson)
 			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
 
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
-			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky']);
+		if (StoryMenuState.weekUnlocked[2] || isCoolPerson)
+			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', 'monster']);
 
-		if (StoryMenuState.weekUnlocked[3] || isDebug)
+		if (StoryMenuState.weekUnlocked[3] || isCoolPerson)
 			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
 
-		if (StoryMenuState.weekUnlocked[4] || isDebug)
+		if (StoryMenuState.weekUnlocked[4] || isCoolPerson)
 			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
 
-		if (StoryMenuState.weekUnlocked[5] || isDebug)
+		if (StoryMenuState.weekUnlocked[5] || isCoolPerson)
 			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
 
-		if (StoryMenuState.weekUnlocked[6] || isDebug)
+		if (StoryMenuState.weekUnlocked[6] || isCoolPerson)
 			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai', 'spirit']);
-*/
 		// LOAD MUSIC
 
 		// LOAD CHARACTERS
@@ -226,6 +222,9 @@ class FreeplayState extends MusicBeatState
 			PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.storyWeek = songs[curSelected].week;
+			PlayState.storyWeek = songs[curSelected].week;
+			PlayState.storyWeek = songs[curSelected].week;
+			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
 			LoadingState.loadAndSwitchState(new PlayState());
 		}
@@ -284,12 +283,12 @@ class FreeplayState extends MusicBeatState
 
 		var bullShit:Int = 0;
 
-		for (i in 0...iconArray.length)
-		{
-			iconArray[i].alpha = 0.6;
-		}
+		//for (i in 0...iconArray.length)
+		//{
+		//	iconArray[i].alpha = 0.6;
+		//}
 
-		iconArray[curSelected].alpha = 1;
+		//iconArray[curSelected].alpha = 1;
 
 		for (item in grpSongs.members)
 		{

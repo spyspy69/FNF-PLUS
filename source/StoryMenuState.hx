@@ -46,7 +46,7 @@ class StoryMenuState extends MusicBeatState
 	];
 
 	var weekNames:Array<String> = [
-		"",
+		"The Begining",
 		"Daddy Dearest",
 		"Spooky Month",
 		"PICO",
@@ -79,7 +79,7 @@ class StoryMenuState extends MusicBeatState
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('coolmenumusicfromfresh'));
 		}
 
 		persistentUpdate = persistentDraw = true;
@@ -115,7 +115,7 @@ class StoryMenuState extends MusicBeatState
 		
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Story Menu | FNF PLUS", null);
 		#end
 
 		for (i in 0...weekData.length)

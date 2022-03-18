@@ -19,8 +19,8 @@ import io.newgrounds.NG;
 import lime.app.Application;
 
 using StringTools;
-var versionnum:String = "1.0";
-var isprebuild:Bool = false; //will be used later, trust me
+var versionnum:String = "2";
+var isCustomClient:Bool = false; //flip this to "true" to signify that it is a customised client
 
 class MainMenuState extends MusicBeatState
 {
@@ -29,9 +29,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'donate', 'options', 'freeplay'];
+	var optionShit:Array<String> = ['story mode', 'options', 'freeplay', 'donate'];
 	#else
-	var optionShit:Array<String> = ['story mode'];
+	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
 
 	var magenta:FlxSprite;
@@ -41,7 +41,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In A Menu | FNF PLUS", null);
+		DiscordClient.changePresence("In the main menu | FNF PLUS", null);
 		#end
 
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -49,14 +49,14 @@ class MainMenuState extends MusicBeatState
 
 		if (!FlxG.sound.music.playing)
 		{
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			FlxG.sound.playMusic(Paths.music('coolmenumusicfromfresh'));
 		}
 
 		persistentUpdate = persistentDraw = true;
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.x = 0;
-		bg.scrollFactor.y = 0.18;
+		bg.scrollFactor.y = 0.1;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -93,7 +93,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
-			menuItem.scrollFactor.set();
+			menuItem.scrollFactor.set(0, 1);
 			menuItem.antialiasing = true;
 		}
 
@@ -183,7 +183,6 @@ class MainMenuState extends MusicBeatState
 										FlxTransitionableState.skipNextTransIn = true;
 										FlxTransitionableState.skipNextTransOut = true;
 										FlxG.switchState(new OptionsMenu());
-										//or options, that also broke shit
 									case 'freeplay':
 										try{
 											FlxG.switchState(new FreeplayState());
@@ -195,10 +194,6 @@ class MainMenuState extends MusicBeatState
 											FlxG.switchState(new StoryMenuState());
 											trace("transfered request for \"freeplayState.hx\" to \"StoryMenuState.hx\"");
 										}
-									case 'fuck off':
-										trace("fuck off");
-										FlxG.switchState(new StoryMenuState());
-										//personal vendetta against nintendo
 								}
 							});
 						}

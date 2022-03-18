@@ -1,5 +1,6 @@
 package;
 
+import GameOverSubstate.bb;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -115,6 +116,9 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	var songScore:Int = 0;
 	var scoreTxt:FlxText;
+	var BLUEBALLEDTXT:FlxText;
+	var bpmText:FlxText;
+	var timegoneby:FlxText;
 
 	public static var campaignScore:Int = 0;
 
@@ -165,22 +169,13 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{
 			case 'tutorial':
-				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
+				//dialogue = CoolUtil.coolTextFile(Paths.txt('tutorial/Dialogue'));
 			case 'bopeebo':
-				dialogue = [
-					'HEY!',
-					"You think you can just sing\nwith my daughter like that?",
-					"If you want to date her...",
-					"You're going to have to go \nthrough ME first!"
-				];
+				//dialogue = CoolUtil.coolTextFile(Paths.txt('bopeebo/Dialogue'));
 			case 'fresh':
-				dialogue = ["Not too shabby boy.", ""];
+				//dialogue = CoolUtil.coolTextFile(Paths.txt('fresh/Dialogue'));
 			case 'dadbattle':
-				dialogue = [
-					"gah you think you're hot stuff?",
-					"If you can beat me here...",
-					"Only then I will even CONSIDER letting you\ndate my daughter!"
-				];
+				//dialogue = CoolUtil.coolTextFile(Paths.txt('dadbattle/Dialogue'));
 			case 'senpai':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
 			case 'roses':
@@ -741,6 +736,18 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
+		BLUEBALLEDTXT = new FlxText(healthBarBG.x + healthBarBG.width - 190 - scoreTxt.x, healthBarBG.y + 15, 0, "", 20);
+		BLUEBALLEDTXT.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		BLUEBALLEDTXT.scrollFactor.set();
+		add(BLUEBALLEDTXT);
+		bpmText = new FlxText(healthBarBG.x + healthBarBG.width - 190 - scoreTxt.x, healthBarBG.y - 0, 0, "", 20);
+		bpmText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		bpmText.scrollFactor.set();
+		add(bpmText);
+		timegoneby = new FlxText(healthBarBG.x + healthBarBG.width - 190 - scoreTxt.x, healthBarBG.y - 15, 0, "", 20);
+		timegoneby.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		timegoneby.scrollFactor.set();
+		add(timegoneby);
 
 
 		iconP1 = new HealthIcon(SONG.player1, true);
@@ -755,9 +762,12 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		timegoneby.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		BLUEBALLEDTXT.cameras = [camHUD];
+		bpmText.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
@@ -1373,6 +1383,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score:" + songScore;
+		BLUEBALLEDTXT.text = "BlueBalls:" + bb;
+		bpmText.text = "BPM:" + Conductor.bpm;
+		timegoneby.text = "Time Elapsed:" + FlxMath.roundDecimal(Conductor.songPosition / 1000, 0);
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -1729,7 +1742,7 @@ class PlayState extends MusicBeatState
 
 			if (storyPlaylist.length <= 0)
 			{
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('coolmenumusicfromfresh'));
 
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
@@ -2089,7 +2102,7 @@ class PlayState extends MusicBeatState
 						case 3:
 							if (right)
 								goodNoteHit(daNote);
-					}
+						}
 				}
 			});
 		}

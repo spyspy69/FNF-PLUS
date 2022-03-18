@@ -1,8 +1,10 @@
 package;
 
+import sys.thread.FixedThreadPool;
 #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
+import Date;
 #end
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -129,10 +131,10 @@ class TitleState extends MusicBeatState
 			// https://github.com/HaxeFlixel/flixel-addons/pull/348
 
 			// var music:FlxSound = new FlxSound();
-			// music.loadStream(Paths.music('freakyMenu'));
+			// music.loadStream(Paths.music('coolmenumusicfromfresh'));
 			// FlxG.sound.list.add(music);
 			// music.play();
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('coolmenumusicfromfresh'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
@@ -213,6 +215,17 @@ class TitleState extends MusicBeatState
 			initialized = true;
 
 		// credGroup.add(credTextShit);
+		var today = Date.now();
+		trace("day = " + today.getDay());
+		if(today.getDay() == 5){
+			if(!Main.triggered){
+				trace("its friday!");
+				FlxG.state.closeSubState();
+				FlxG.switchState(new FridayState());
+			}else{
+				//bruh
+			}
+		}
 	}
 
 	function getIntroTextShit():Array<Array<String>>
@@ -378,9 +391,9 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['made by competitive players', 'for']);
+				createCoolText(['made by nilon', 'for']);
 			case 7:
-				addMoreText('competitive players');
+				addMoreText('no reason at all');
 				ngSpr.visible = false;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:

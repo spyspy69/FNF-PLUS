@@ -1,14 +1,21 @@
 package;
 
+import haxe.exceptions.NotImplementedException;
+import lime.text.harfbuzz.HBGlyphPosition;
+import haxe.macro.Expr.Position;
+import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.addons.transition.FlxTransitionableState;
+import haxe.macro.Context;
+import Discord.DiscordClient;
 
 class OptionsSubState extends MusicBeatSubstate
 {
-	var textMenuItems:Array<String> = ['Controls', 'Botplay', 'Back'];
+	var textMenuItems:Array<String> = ['Controls', 'Disable Input', 'Credits', 'Mods',  'Back'];
 
 	var selector:FlxSprite;
 	var curSelected:Int = 0;
@@ -18,7 +25,10 @@ class OptionsSubState extends MusicBeatSubstate
 	public function new()
 	{
 		super();
-
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("Changing some settings | FNF PLUS", null);
+		#end
 		grpOptionsTexts = new FlxTypedGroup<FlxText>();
 		add(grpOptionsTexts);
 
@@ -32,7 +42,6 @@ class OptionsSubState extends MusicBeatSubstate
 			grpOptionsTexts.add(optionText);
 		}
 	}
-
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -66,13 +75,24 @@ class OptionsSubState extends MusicBeatSubstate
 			switch (textMenuItems[curSelected])
 			{
 				case "Controls":
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
 					FlxG.switchState(new ControlsSubState());
 				case "Back":
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
 					FlxG.state.closeSubState();
-					FlxG.switchState(new MainMenuState()); //or you could press ESC
-				case "Botplay":
-					FlxG.switchState(new BotPlaySettingsState());
+					FlxG.switchState(new MainMenuState()); //or you could press ESC, idk
+				case "Disable Input":
+					new NotImplementedException("this hasn't been implemented yet");
+				case "Credits":
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
+					FlxG.switchState(new CredShitState()); //trust me, it is shit.
+				case "Mods":
+					new NotImplementedException("this hasn't been implemented yet");
+				}
 			}
 		}
-	}
+	
 }

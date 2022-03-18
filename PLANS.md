@@ -1,6 +1,6 @@
-better settings menu! <Postponed>
+better settings menu! <Kinda re-done, idk>
 
-freeplay re-made to work this time <got working, only displays "tutorial" for the moment. just incase there is an error, i have wrapped it in a try:catch statment>
+freeplay re-made to work this time <done!>
 
 botplay (?)
 
@@ -10,4 +10,4 @@ Difficulty Switcher in Pause state
 
 full rechart! not saying they're bad, but they're bad
 
--- it's 5:43 pm as i'm writing this i need to touch grass
+-- it's 10:59 pm in england, i need sleep

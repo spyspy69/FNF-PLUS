@@ -45,7 +45,7 @@ class DiscordClient
 
 	static function onError(_code:Int, _message:String)
 	{
-		trace('Error! $_code : $_message');
+		trace('this is a certified bruh moment: $_code : $_message');
 	}
 
 	static function onDisconnected(_code:Int, _message:String)

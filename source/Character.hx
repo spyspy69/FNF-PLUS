@@ -599,7 +599,6 @@ class Character extends FlxSprite
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
-
 						if (danced)
 							playAnim('danceRight');
 						else
