@@ -1,8 +1,8 @@
-better settings menu! <Kinda re-done, idk>
+better settings menu! <Kinda re-done, just needs a few tweeks here and there>
 
 freeplay re-made to work this time <done!>
 
-botplay (?)
+botplay <no, if anyone wants to do it, be my guest>
 
 Funkin LUA Interp
 
