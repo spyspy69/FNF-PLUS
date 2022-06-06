@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: "[BUG]"
-labels: ''
+name: Mod Related Issues
+about: mod related issues
+title: "[MOD RELATED]"
+labels: mod issues
 assignees: ''
 
 ---
@@ -22,6 +22,7 @@ A clear and concise description of what you expected to happen.
  - OS: 
  - Version: 
  - Client Version:
+ - What the mod changed/changes:
 
 **Additional context**
 Add any other context about the problem here.
