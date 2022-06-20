@@ -36,7 +36,7 @@ flixel
 flixel-addons
 flixel-ui
 hscript
-newgrounds
+newgrounds -- decapricating soon...
 ```
 So for each of those type `haxelib install [library]` so shit like `haxelib install newgrounds`
 
