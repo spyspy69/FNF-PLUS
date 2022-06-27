@@ -15,7 +15,6 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import io.newgrounds.NG;
 import lime.app.Application;
 
 using StringTools;
@@ -26,10 +25,11 @@ class MainMenuState extends MusicBeatState
 {
 	var curSelected:Int = 0;
 
-	var menuItems:FlxTypedGroup<FlxSprite>;
+	var menuItems:FlxTypedGroup<Alphabet>;
+	var menuItemsBackup:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'options', 'freeplay', 'donate'];
+	var optionShit:Array<String> = ['story mode', 'options', 'freeplay', 'donate', 'github'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -56,12 +56,21 @@ class MainMenuState extends MusicBeatState
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.x = 0;
-		bg.scrollFactor.y = 0.1;
+		bg.scrollFactor.y = 0.03;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = true;
 		add(bg);
+
+		var pointer:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('arrowPain'));
+		pointer.scrollFactor.x = 0;
+		pointer.scrollFactor.y = 0.0;
+		pointer.updateHitbox();
+		pointer.screenCenter();
+		pointer.antialiasing = true;
+		add(bg);
+
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
@@ -78,23 +87,41 @@ class MainMenuState extends MusicBeatState
 		add(magenta);
 		// magenta.scrollFactor.set();
 
-		menuItems = new FlxTypedGroup<FlxSprite>();
-		add(menuItems);
+		try{
+			menuItems = new FlxTypedGroup<Alphabet>();
+			add(menuItems);
+		}
+		catch(e){
+			menuItemsBackup = new FlxTypedGroup<FlxSprite>();
+			add(menuItemsBackup);
+		}
 
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 
 		for (i in 0...optionShit.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
-			menuItem.frames = tex;
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
-			menuItem.animation.play('idle');
-			menuItem.ID = i;
-			menuItem.screenCenter(X);
-			menuItems.add(menuItem);
-			menuItem.scrollFactor.set(0, 1);
-			menuItem.antialiasing = true;
+			//new system cuz old one was a pain
+			try{
+				var money:Alphabet = new Alphabet(0, 60 + (i * 160), optionShit[i], true, false);
+				money.ID = i;
+				money.screenCenter(X);
+				menuItems.add(money);
+				money.scrollFactor.set(0, 1);
+				money.antialiasing = true;
+			}
+			catch(e){
+				//as it can sometimes fail, here's a failsafe
+				var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
+				menuItem.frames = tex;
+				menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
+				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+				menuItem.animation.play('idle');
+				menuItem.ID = i;
+				menuItem.screenCenter(X);
+				menuItemsBackup.add(menuItem);
+				menuItem.scrollFactor.set(0, 1);
+				menuItem.antialiasing = true;
+			}
 		}
 
 		FlxG.camera.follow(camFollow, null, 0.06);
@@ -156,7 +183,7 @@ class MainMenuState extends MusicBeatState
 
 					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
-					menuItems.forEach(function(spr:FlxSprite)
+					menuItems.forEach(function(spr:Alphabet)
 					{
 						if (curSelected != spr.ID)
 						{
@@ -204,7 +231,7 @@ class MainMenuState extends MusicBeatState
 
 		super.update(elapsed);
 
-		menuItems.forEach(function(spr:FlxSprite)
+		menuItems.forEach(function(spr:Alphabet)
 		{
 			spr.screenCenter(X);
 		});
@@ -219,13 +246,13 @@ class MainMenuState extends MusicBeatState
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;
 
-		menuItems.forEach(function(spr:FlxSprite)
+		menuItems.forEach(function(spr:Alphabet)
 		{
-			spr.animation.play('idle');
+			//spr.animation.play('idle');
 
 			if (spr.ID == curSelected)
 			{
-				spr.animation.play('selected');
+				//spr.animation.play('selected');
 				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
 			}
 

@@ -90,7 +90,7 @@ class OptionsSubState extends MusicBeatSubstate
 					FlxTransitionableState.skipNextTransOut = true;
 					FlxG.switchState(new CredShitState()); //trust me, it is shit.
 				case "Mods":
-					new NotImplementedException("this hasn't been implemented yet");
+						new NotImplementedException("☠");
 				}
 			}
 		}

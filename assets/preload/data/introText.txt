@@ -1,3 +1,4 @@
+i am the--invisible text
 shoutouts to--tom fulp
 Ludum dare--extraordinaire
 lmao--lmao
@@ -51,3 +52,4 @@ changes one line--30 errors
 mods are--extremely annoying to code
 tankman--tankman
 your toes--hand them over
+tankmans week--now on funky friday

@@ -1,13 +1,16 @@
 package;
 
+import openfl.ui.Keyboard;
+import MainMenuState.MainMenuState.versionnum;
 import flixel.FlxG;
+import legacyshit.PathsLeg;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.app.Application;
 
-class OutdatedSubState extends MusicBeatState
+class DebugSubState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 
@@ -16,14 +19,10 @@ class OutdatedSubState extends MusicBeatState
 		super.create();
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
-		var ver = "v" + Application.current.meta.get('version');
-		trace(ver);
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"HEY! You're running an outdated version of the game!\nCurrent version is "
-			+ ver
-			+ " while the most recent version is "
-			+ "UNDEFINED"
-			+ "! Press Space to go to itch.io, or ESCAPE to ignore this!!",
+			"HEY! You're running a version of the game in debug mode!\nthis can cause some instabilities "
+			+ "\nenjoy the game nonetheless\n"
+			+ "press any key to continue!",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
@@ -32,11 +31,7 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.ACCEPT)
-		{
-			FlxG.openURL("https://ninja-muffin24.itch.io/funkin");
-		}
-		if (controls.BACK)
+		if (FlxG.keys.anyPressed([ANY]))
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());

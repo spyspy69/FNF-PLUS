@@ -17,7 +17,6 @@ class Highscore
 
 
 		#if !switch
-		NGio.postScore(score, song);
 		#end
 
 
@@ -34,7 +33,6 @@ class Highscore
 	{
 
 		#if !switch
-		NGio.postScore(score, "Week " + week);
 		#end
 
 
