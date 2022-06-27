@@ -36,7 +36,7 @@ flixel
 flixel-addons
 flixel-ui
 hscript
-newgrounds
+newgrounds -- decapricating soon...
 ```
 So for each of those type `haxelib install [library]` so shit like `haxelib install newgrounds`
 
@@ -77,3 +77,9 @@ As for Mac, 'lime test mac -debug' should work, if not the internet surely has a
 
 ### Additions
 [PLANS.md](https://github.com/spyspy69/FNF-PLUS/blob/master/PLANS.md) is a list of the plans i have for this project. you will see a <working on now!> next to the item i'm working on, and you can help to! just pick one that doesnt have either <working on now!> or <done!> next to them and get to work, your help will be valued
+
+
+## where have i been?
+to put it bluntly: building a new rig, internet problems, lost V2.0 files so i'm rebuilding it from scratch
+there has also been some family-side problems so im dealing with that as well (family dying, depression)
+2.0 is still comming, just please be patient
